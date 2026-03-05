@@ -42,3 +42,5 @@ Public beta foundation is ready. The repository is now in **execution mode**
 1. Contact candidates and run non-assisted pilots.
 2. Log outcomes in the internal pilot tracker.
 3. Triage after first 2 completed pilots using keep/tuning/docs metrics.
+4. Track major GitHub Actions upgrades separately:
+   - `docs/launch/actions-v6-compatibility-checklist.md`
