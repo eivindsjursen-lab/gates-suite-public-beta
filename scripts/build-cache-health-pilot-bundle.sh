@@ -48,13 +48,13 @@ cp "$TEMPLATE_DIR/PERMISSIONS.md" "$STAGE_DIR/PERMISSIONS.md"
 cp "$TEMPLATE_DIR/LICENSE.txt" "$STAGE_DIR/LICENSE.txt"
 
 cat > "$STAGE_DIR/BUNDLE-METADATA.txt" <<EOF
-Cache Health Gate Private Alpha Pilot Bundle
+Cache Health Gate Public Beta Pilot Bundle
 
 Built at (UTC): $TIMESTAMP
 Source commit: $COMMIT_SHA
 Source commit (short): $COMMIT_SHORT
 Action entrypoint: dist/action.cjs
-Bundle purpose: Assisted private alpha evaluation (dist-only)
+Bundle purpose: Public beta evaluation bundle (dist-only)
 EOF
 
 (

@@ -20,6 +20,10 @@ exports[`golden snapshot: CI Minutes Gate job summaries > FAIL — workflow regr
 
 - Job "build" regressed 71%. Review its steps for new or slower operations.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
 `;
@@ -40,6 +44,10 @@ No regressions or findings detected.
 ### Now what
 
 - No action required.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
@@ -63,6 +71,10 @@ No regressions or findings detected.
 - Run the workflow on \`push\` for the default branch to build baseline history (usually 5-10 successful runs).
 - After baseline is available, open a PR with a controlled cache-key change to verify \`WARN_HIT_RATE_DROP\` is detected.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *CI Minutes Delta Gate · confidence: low · 0 baseline samples*"
 `;
@@ -83,6 +95,10 @@ No regressions or findings detected.
 ### Now what
 
 - Workflow exceeded budget by 1m 40s. Consider parallelizing steps or caching dependencies.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
@@ -106,6 +122,10 @@ exports[`golden snapshot: CI Minutes Gate job summaries > WARN — degraded from
 ### Now what
 
 - Overall workflow duration regressed. Check the top jobs below for the biggest contributors.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *CI Minutes Delta Gate · confidence: low · 3 baseline samples*"

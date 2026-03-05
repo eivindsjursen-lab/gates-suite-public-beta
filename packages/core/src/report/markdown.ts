@@ -152,7 +152,7 @@ function defaultNextSteps(result: GateResult): string[] {
 
 function feedbackLinkForGate(gateName: string): string {
   if (gateName === "cache-health-gate") {
-    return "https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml";
+    return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml";
   }
-  return "https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose";
+  return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose";
 }
