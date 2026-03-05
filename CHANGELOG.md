@@ -13,6 +13,7 @@ releases.
   pilot onboarding.
 - `CONTRIBUTING.md` for contributor workflow and required local checks.
 - `.github/dependabot.yml` for weekly dependency and GitHub Actions updates.
+- MIT license for public beta distribution.
 
 ### Changed
 
@@ -22,12 +23,12 @@ releases.
 
 ### Added
 
-- Private Alpha hardening for Cache Health Gate:
+- Early hardening for Cache Health Gate:
   - self-baselining protection
   - cache-aware baseline confidence downgrade
   - improved setup guidance in summaries for no-cache/no-baseline states
 
 ### Notes
 
-- This is a Private Alpha milestone, not a public GA release.
-- Preferred install path for pilots remains the local vendored bundle.
+- This is an early milestone and not a public GA release.
+- Current public beta default install path uses the public tag ref.
