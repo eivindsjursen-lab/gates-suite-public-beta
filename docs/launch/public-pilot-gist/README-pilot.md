@@ -17,7 +17,7 @@ This is a low-risk GitHub Action pilot:
 
 ## Primary pilot install path
 
-For private/alpha pilots, use a local vendored bundle in the target repo:
+For vendored/local deployment, use a local bundle in the target repo:
 
 - `.github/actions/cache-health-gate/action.yml`
 - `.github/actions/cache-health-gate/dist/*`

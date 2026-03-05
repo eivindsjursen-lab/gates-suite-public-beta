@@ -25,7 +25,7 @@ Baseline: **10** samples from \`main\` (api mode, workflow 789)
 
 ### Feedback
 
-- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *gates-suite/cache-health-gate · confidence: high · 10 baseline samples*"
@@ -52,7 +52,7 @@ Baseline: **10** samples from \`main\` (api mode, workflow 123)
 
 ### Feedback
 
-- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *gates-suite/cache-health-gate · confidence: high · 10 baseline samples*"
@@ -78,7 +78,7 @@ No regressions or findings detected.
 
 ### Feedback
 
-- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *gates-suite/cache-health-gate · confidence: low · 0 baseline samples*"
@@ -110,7 +110,7 @@ Baseline: **8** samples from \`main\` (api mode, workflow 456)
 
 ### Feedback
 
-- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *gates-suite/cache-health-gate · confidence: med · 8 baseline samples*"
@@ -138,7 +138,7 @@ exports[`renderJobSummary > renders findings for permission diff gate 1`] = `
 
 ### Feedback
 
-- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *gates-suite/agent-permission-diff-gate · confidence: high · 0 baseline samples*"

@@ -55231,9 +55231,9 @@ function defaultNextSteps(result) {
 }
 function feedbackLinkForGate(gateName) {
   if (gateName === "cache-health-gate") {
-    return "https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml";
+    return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml";
   }
-  return "https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose";
+  return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose";
 }
 function toCommandValue2(input) {
   if (input === null || input === void 0) {

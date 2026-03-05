@@ -23,6 +23,10 @@ exports[`golden snapshot: Permission Diff Gate job summaries > FAIL — critical
 - Some permissions were inferred by heuristic. Add explicit capability declarations.
 - Critical: terminal uses exec.shell. Ensure this is intentional and documented.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
 `;
@@ -46,6 +50,10 @@ exports[`golden snapshot: Permission Diff Gate job summaries > PASS — approved
 
 - No action required.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
 `;
@@ -66,6 +74,10 @@ No regressions or findings detected.
 ### Now what
 
 - No action required.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
@@ -91,6 +103,10 @@ exports[`golden snapshot: Permission Diff Gate job summaries > WARN — heuristi
 
 - Some permissions were inferred by heuristic. Add explicit capability declarations to your config.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *Agent Permission Diff Gate · confidence: low · 0 baseline samples*"
 `;
@@ -113,6 +129,10 @@ exports[`golden snapshot: Permission Diff Gate job summaries > WARN — medium-r
 ### Now what
 
 - No action required.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *Agent Permission Diff Gate · confidence: med · 0 baseline samples*"
