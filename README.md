@@ -239,6 +239,7 @@ For public beta onboarding and pilot-safe references, use:
 - `docs/troubleshooting/common-issues.md` (symptom-based fixes)
 - `docs/launch/week1-outreach-execution.md` (operator checklist for outreach)
 - `docs/launch/pilot-candidate-tracker.md` (candidate/pilot logging)
+- `docs/launch/public-beta-readiness-status.md` (single-source readiness snapshot)
 - `docs/launch/public-pilot-gist/README-pilot.md` (public pilot overview)
 - `docs/launch/public-pilot-gist/PERMISSIONS.md` (data use + minimum permissions)
 - `docs/launch/public-pilot-gist/ROLLBACK.md` (fast off-ramp)
