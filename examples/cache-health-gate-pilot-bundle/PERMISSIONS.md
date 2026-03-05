@@ -1,8 +1,8 @@
-# Permissions and Data Use (Private Alpha Pilot)
+# Permissions and Data Use (Public Beta Pilot)
 
 ## Recommended workflow permissions
 
-Use these workflow permissions for the alpha workflow:
+Use these workflow permissions for the beta workflow:
 
 - `contents: read`
 - `actions: read`

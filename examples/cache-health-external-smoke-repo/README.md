@@ -94,7 +94,7 @@ to:
 
 The workflow references the released action by prefixed major tag:
 
-`eivindsjursen-lab/gates-suite/packages/cache-health-gate@cache-health-gate/v1`
+`eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1`
 
 ## First week operator loop (recommended)
 

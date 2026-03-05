@@ -6,10 +6,10 @@
 
 ### What changed
 
-| Scope | Name | Delta | Baseline | Current |
-|------|------|------:|---------:|--------:|
-| job | test | +35.2% | 2.0m | 2.7m |
-| step | npm install | +80.0% | 30.0s | 54.0s |
+| Scope | Name        |  Delta | Baseline | Current |
+| ----- | ----------- | -----: | -------: | ------: |
+| job   | test        | +35.2% |     2.0m |    2.7m |
+| step  | npm install | +80.0% |    30.0s |   54.0s |
 
 ### So what
 
@@ -28,4 +28,5 @@ Baseline: **8** samples from `main` (api mode, workflow 456)
 - Report feedback/issues: `<your feedback link>`
 
 ---
-*gates-suite/cache-health-gate · confidence: med · 8 baseline samples*
+
+_gates-suite/cache-health-gate · confidence: med · 8 baseline samples_
