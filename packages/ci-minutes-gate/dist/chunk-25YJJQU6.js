@@ -51033,9 +51033,9 @@ function defaultNextSteps(result) {
 }
 function feedbackLinkForGate(gateName) {
   if (gateName === "cache-health-gate") {
-    return "https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml";
+    return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml";
   }
-  return "https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose";
+  return "https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose";
 }
 function toCommandValue(input) {
   if (input === null || input === void 0) {
@@ -52426,4 +52426,4 @@ undici/lib/web/fetch/body.js:
 undici/lib/web/websocket/frame.js:
   (*! ws. MIT License. Einar Otto Stangvik <einaros@gmail.com> *)
 */
-//# sourceMappingURL=chunk-2WJA2VUP.js.map
+//# sourceMappingURL=chunk-25YJJQU6.js.map

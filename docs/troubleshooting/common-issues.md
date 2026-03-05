@@ -119,22 +119,26 @@ See the [Cache Health Gate README](../../packages/cache-health-gate/README.md) f
 **Symptom:** The workflow fails during job setup before the gate step runs, with
 an error like `repository not found`.
 
-**Cause:** The action repository is private, and the target repository does not
-have access to use the action by cross-repo reference.
+**Cause:** The action ref is wrong, inaccessible, or blocked by repository/org
+policy.
 
-**Fix (Private Alpha recommended path):**
+**Fix (Public Beta recommended path):**
+
+- Use the public tag ref:
+
+```yaml
+- name: Cache Health Gate
+  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
+```
+
+**Fallback (if cross-repo actions are blocked):**
 
 - Vendor the action locally in the target repo:
   - `.github/actions/cache-health-gate/action.yml`
   - `.github/actions/cache-health-gate/dist/*`
-- Use a local action reference:
+- Use `uses: ./.github/actions/cache-health-gate`
 
-```yaml
-- name: Cache Health Gate
-  uses: ./.github/actions/cache-health-gate
-```
-
-**Alternative (same org / shared private repo):**
+**Alternative (same org / shared private action repo):**
 
 - Ensure the target repository is allowed to access the private action repo.
 - Confirm workflow permissions and org/repo Actions settings allow private action
@@ -203,7 +207,7 @@ Common causes include:
 
 Treat this as a **tuning signal first**, not a product bug.
 
-In private alpha so far, `WARN_HIT_RATE_DROP` has been the most reliable first
+In dogfood + pilot testing so far, `WARN_HIT_RATE_DROP` has been the most reliable first
 signal to trust and investigate.
 
 ### Tuning guide for noisy repos (matrix / package-heavy)
