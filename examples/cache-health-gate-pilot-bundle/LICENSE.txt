@@ -1,8 +1,8 @@
-Private Alpha Evaluation Notice (Not an Open Source License)
+Public Beta Evaluation Notice (Not an Open Source License)
 
-This bundle is provided for limited private alpha evaluation only.
+This bundle is provided for limited public beta evaluation only.
 
 No open source license is granted for this bundle or its contents.
 Do not redistribute, publish, or reuse outside the agreed pilot evaluation without explicit permission from the provider.
 
-This file is included to make the evaluation scope explicit during private alpha.
+This file is included to make the evaluation scope explicit during public beta.

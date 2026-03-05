@@ -21,7 +21,7 @@ If anything conflicts with the PDF, the PDF wins.
 
 ### Status by product
 
-- **Cache Health Gate** - Private Alpha (active)
+- **Cache Health Gate** - Public Beta (active)
 - **CI Minutes Delta Gate** - Planned / internal development
 - **Agent Permission Diff Gate** - Planned / internal development
 
@@ -34,18 +34,18 @@ Current work is focused on:
 - signal quality in real repositories
 - docs-first tuning guidance
 
-New feature work is intentionally deferred until Private Alpha signal quality
+New feature work is intentionally deferred until Public Beta signal quality
 is validated.
 
-## Early Access / Priority Support
+## Public Beta / Support
 
-The suite is in mixed maturity, but **Cache Health Gate** is the current focus and is in **Private Alpha** (pilot by request).
+The suite is in mixed maturity, but **Cache Health Gate** is the current focus and is in **Public Beta**.
 
-If these gates save CI time or catch regressions for your team, open an issue with your repo context or reach out for a pilot.
+If this gate catches regressions for your team, open an issue with your repo context.
 
-- **Early adopters / feedback**: use the **"Early Access Feedback (Cache Health Gate)"** issue template and include:
+- **Feedback**: use the **"Early Access Feedback (Cache Health Gate)"** issue template and include:
   repo/workflow type, verdict, `reason_codes`, whether the verdict was correct, and whether you had to tune thresholds
-- **Paid priority support / rollout help**: open an issue and label it `support` (we can move to a private channel)
+- **Paid priority support / rollout help**: open an issue and label it `support`
 - **Sponsor signal**: GitHub Sponsors (if available for your account/org) is the fastest way to signal demand
 
 What we want most from early users right now:
@@ -54,7 +54,7 @@ What we want most from early users right now:
 - PR comment clarity (did it explain the issue and fix?)
 - threshold tuning friction (did defaults work, or what needed tuning?)
 
-## Cache Health Gate (Private Alpha)
+## Cache Health Gate (Public Beta)
 
 GitHub Action that detects **cache regressions in PRs** before merge.
 
@@ -66,7 +66,7 @@ It catches:
 
 ### Current phase
 
-This action is currently in **Private Alpha** (early access / pilot by request).
+This action is currently in **Public Beta**.
 
 ### Works with
 
@@ -78,7 +78,7 @@ Validated in real PR workflows on:
 - `actions/cache@v4`
 
 Note: In larger or matrix-heavy repos, restore-time warnings may require tuning.
-In our private alpha so far, hit-rate regressions (`WARN_HIT_RATE_DROP`) have
+In dogfood + pilot testing so far, hit-rate regressions (`WARN_HIT_RATE_DROP`) have
 been the strongest first signal to trust and investigate.
 
 ### Onboarding behavior (expected)
@@ -94,9 +94,7 @@ This is expected. The gate builds a baseline from **successful runs on the defau
 
 Make sure your workflow runs on `push` to the default branch (for example `main`) so baseline samples can be collected.
 
-### Early access
-
-If you want to test it in a real repo, use the early-access feedback flow and include:
+### Feedback
 
 - repo type (Node/Python/matrix/monorepo)
 - whether install worked without help
@@ -224,7 +222,7 @@ Per-action tags in this monorepo use a prefix:
 
 - version tag: `cache-health-gate/v1.0.0`
 - floating major tag: `cache-health-gate/v1`
-- private alpha baseline: `0.1.0-alpha.1` (workspace/package metadata)
+- initial internal baseline: `0.1.0-alpha.1` (workspace/package metadata)
 
 Cache Health Gate install example:
 

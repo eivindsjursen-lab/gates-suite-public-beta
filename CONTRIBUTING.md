@@ -7,7 +7,7 @@ Thanks for contributing to `gates-suite`.
 - Keep PRs small and focused.
 - Do not change public contracts (inputs, outputs, reason codes, schema) without
   explicit rationale and corresponding docs/tests updates.
-- During Private Alpha, prioritize reliability, clarity, and onboarding over new
+- During Public Beta, prioritize reliability, clarity, and onboarding over new
   feature scope.
 
 For agent-specific contribution rules, see `.github/AGENTS.md`.
