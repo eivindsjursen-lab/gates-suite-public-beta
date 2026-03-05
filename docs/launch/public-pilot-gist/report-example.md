@@ -25,7 +25,7 @@ Baseline: **8** samples from `main` (api mode, workflow 456)
 
 ### Feedback
 
-- Report feedback/issues: `<your feedback link>`
+- Report feedback/issues: `https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml`
 
 ---
 

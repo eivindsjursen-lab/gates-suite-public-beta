@@ -35,12 +35,10 @@ Public beta foundation is ready. The repository is now in **execution mode**
 ### Operational readiness
 
 - [x] Public beta announcement template
-- [x] Issue-first outreach template
-- [x] Week-1 outreach execution checklist
-- [x] Pilot candidate tracker
+- [x] Internal outreach plan and tracker maintained outside this public repo
 
 ## Current Focus
 
 1. Contact candidates and run non-assisted pilots.
-2. Log outcomes in `docs/launch/pilot-candidate-tracker.md`.
+2. Log outcomes in the internal pilot tracker.
 3. Triage after first 2 completed pilots using keep/tuning/docs metrics.
