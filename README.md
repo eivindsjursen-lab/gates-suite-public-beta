@@ -13,9 +13,7 @@ fail when cache breaks, CI slows down, or agent permissions creep.
 
 ## Spec (source of truth)
 
-[`docs/CI_Gates_All_In_One_v2_1.pdf`](docs/CI_Gates_All_In_One_v2_1.pdf)
-
-If anything conflicts with the PDF, the PDF wins.
+Full blueprint/spec is available on request during public beta.
 
 ## Current Phase
 
