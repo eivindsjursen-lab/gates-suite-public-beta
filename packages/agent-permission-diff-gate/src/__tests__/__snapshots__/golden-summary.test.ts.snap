@@ -1,0 +1,119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden snapshot: Permission Diff Gate job summaries > FAIL — critical escalation 1`] = `
+"## Agent Permission Diff Gate
+
+**❌ FAIL** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| job | terminal/exec.shell | critical | added: terminal gains exec.shell (critical risk, heuristic) |
+| job | terminal/egress.http | high | added: terminal gains egress.http (high risk, heuristic) |
+
+### So what
+
+- **FAIL_CAPABILITY_ESCALATION**: High-risk capability escalation detected (egress, write, secrets, or repo.write). Requires explicit approval via label or CODEOWNERS.
+- **WARN_HEURISTIC_MAPPING**: Some permissions were detected by heuristic rather than explicit config declaration. Verify accuracy manually.
+
+### Now what
+
+- High-risk capability change detected. Add the "agent-scope-approved" label to approve.
+- Some permissions were inferred by heuristic. Add explicit capability declarations.
+- Critical: terminal uses exec.shell. Ensure this is intentional and documented.
+
+---
+*Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: Permission Diff Gate job summaries > PASS — approved via label 1`] = `
+"## Agent Permission Diff Gate
+
+**✅ PASS** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| job | terminal/exec.shell | critical | added: terminal gains exec.shell (approved via label) |
+
+### So what
+
+- **PASS_NO_SCOPE_CHANGE**: No capability scope changes detected between base and head.
+
+### Now what
+
+- No action required.
+
+---
+*Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: Permission Diff Gate job summaries > PASS — no scope change 1`] = `
+"## Agent Permission Diff Gate
+
+**✅ PASS** · confidence: **high**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **PASS_NO_SCOPE_CHANGE**: No capability scope changes detected between base and head.
+
+### Now what
+
+- No action required.
+
+---
+*Agent Permission Diff Gate · confidence: high · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: Permission Diff Gate job summaries > WARN — heuristic-only detection 1`] = `
+"## Agent Permission Diff Gate
+
+**⚠️ WARN** · confidence: **low**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| job | docker-build/exec.docker | critical | added: docker-build gains exec.docker (critical risk, heuristic) |
+
+### So what
+
+- **WARN_CAPABILITY_EXPANSION**: Low/medium-risk capability expansion detected. Review the changes and consider adding explicit approval if appropriate.
+- **WARN_HEURISTIC_MAPPING**: Some permissions were detected by heuristic rather than explicit config declaration. Verify accuracy manually.
+
+### Now what
+
+- Some permissions were inferred by heuristic. Add explicit capability declarations to your config.
+
+---
+*Agent Permission Diff Gate · confidence: low · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: Permission Diff Gate job summaries > WARN — medium-risk expansion 1`] = `
+"## Agent Permission Diff Gate
+
+**⚠️ WARN** · confidence: **med**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| job | comment-bot/write.issues | medium | added: comment-bot gains write.issues (medium risk, explicit) |
+
+### So what
+
+- **WARN_CAPABILITY_EXPANSION**: Low/medium-risk capability expansion detected. Review the changes and consider adding explicit approval if appropriate.
+
+### Now what
+
+- No action required.
+
+---
+*Agent Permission Diff Gate · confidence: med · 0 baseline samples*"
+`;

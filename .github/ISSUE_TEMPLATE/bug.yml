@@ -1,0 +1,52 @@
+name: Bug
+description: Report a bug or unexpected behavior
+labels: ["bug"]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Fixture, workflow snippet, or steps to reproduce.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Likely component
+      options:
+        - core
+        - cache-health-gate
+        - ci-minutes-gate
+        - agent-permission-diff-gate
+        - ci-release
+        - unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Include regression test requirements.
+      placeholder: |
+        - [ ] Bug is fixed
+        - [ ] Regression test added
+    validations:
+      required: true

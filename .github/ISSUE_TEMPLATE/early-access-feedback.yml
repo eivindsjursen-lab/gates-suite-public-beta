@@ -1,0 +1,165 @@
+name: Early Access Feedback (Cache Health Gate)
+description: Share a real-world install result, verdict quality, and tuning friction
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying Cache Health Gate.
+
+        We are looking for signal quality feedback more than feature requests:
+        - false positives / false negatives
+        - comment clarity
+        - threshold tuning friction
+
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Gate
+      options:
+        - cache-health-gate
+    validations:
+      required: true
+
+  - type: dropdown
+    id: repo_type
+    attributes:
+      label: Repo type
+      options:
+        - Node / pnpm
+        - Node / npm
+        - Node / yarn
+        - Python / pip
+        - Python / poetry
+        - Polyglot monorepo
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: workflow_type
+    attributes:
+      label: Workflow profile
+      options:
+        - Single job CI
+        - Multi-job CI
+        - Matrix CI
+        - Monorepo CI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: install_snippet
+    attributes:
+      label: Workflow snippet (redacted if needed)
+      description: Include the gate step and cache step(s). Remove private details.
+      placeholder: |
+        - uses: actions/cache@v4
+          with:
+            key: ...
+        - uses: .../cache-health-gate@cache-health-gate/v1
+          with:
+            ...
+    validations:
+      required: true
+
+  - type: input
+    id: verdict
+    attributes:
+      label: Gate verdict
+      description: "Example: pass / warn / fail / skipped"
+      placeholder: warn
+    validations:
+      required: true
+
+  - type: input
+    id: confidence
+    attributes:
+      label: Confidence
+      description: "Example: low / med / high"
+      placeholder: high
+    validations:
+      required: false
+
+  - type: input
+    id: baseline_samples
+    attributes:
+      label: Baseline samples
+      description: Output value from the action (if available)
+      placeholder: "5"
+    validations:
+      required: false
+
+  - type: textarea
+    id: reason_codes
+    attributes:
+      label: Reason codes
+      description: Paste `reason_codes` output JSON
+      placeholder: |
+        ["WARN_HIT_RATE_DROP"]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: verdict_quality
+    attributes:
+      label: Was the verdict correct?
+      options:
+        - Yes
+        - Mostly (useful but noisy)
+        - No
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: comment_quality
+    attributes:
+      label: PR comment / summary quality
+      options:
+        - Clear and actionable
+        - Understandable but missing context
+        - Hard to understand
+        - No PR comment (summary only)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tuning_needed
+    attributes:
+      label: Did you need to tune thresholds?
+      options:
+        - No
+        - Yes (minor)
+        - Yes (significant)
+        - Not yet
+    validations:
+      required: true
+
+  - type: textarea
+    id: tuning_details
+    attributes:
+      label: Threshold tuning details (if any)
+      description: Which inputs did you change and why?
+      placeholder: |
+        thresholds_restore_regression_pct: "..."
+        thresholds_hit_rate_drop_pct: "..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: helpfulness
+    attributes:
+      label: What was most useful (or least useful)?
+      description: Tell us what the gate helped you understand (or failed to explain).
+    validations:
+      required: true
+
+  - type: input
+    id: run_link
+    attributes:
+      label: Run link (optional)
+      description: GitHub Actions run URL if shareable
+    validations:
+      required: false

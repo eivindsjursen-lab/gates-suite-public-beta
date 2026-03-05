@@ -1,0 +1,9 @@
+# Default owner for everything
+* @eivindsjursen-lab
+
+# Core package — extra review for shared contracts
+packages/core/ @eivindsjursen-lab
+
+# CI and release — maintainer only
+.github/ @eivindsjursen-lab
+scripts/ @eivindsjursen-lab

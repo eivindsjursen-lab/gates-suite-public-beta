@@ -1,0 +1,46 @@
+name: "Agent Tool Permission Diff Gate"
+description: "Fail PR when agent or tool capability scope expands without approval."
+author: "gates-suite"
+
+branding:
+  icon: "lock"
+  color: "red"
+
+inputs:
+  token:
+    description: "GitHub token for API access"
+    required: false
+    default: ${{ github.token }}
+  mode:
+    description: "Gate mode: warn or fail"
+    required: false
+    default: "warn"
+  policy_level:
+    description: "Policy strictness: lenient, standard, or strict"
+    required: false
+    default: "standard"
+  approval_label:
+    description: "Label that approves scope expansion"
+    required: false
+    default: "agent-scope-approved"
+  allowlist_path:
+    description: "Path to allowlist YAML file"
+    required: false
+  config_paths:
+    description: "Glob patterns for agent/MCP config files (JSON array)"
+    required: false
+    default: '[".github/mcp*.yml",".github/mcp*.yaml",".github/mcp*.json",".github/agent*.yml",".github/agent*.yaml"]'
+
+outputs:
+  result:
+    description: "Gate verdict: pass, warn, fail, or skipped"
+  confidence:
+    description: "Confidence level: low, med, or high"
+  reason_codes:
+    description: "JSON array of machine-readable reason codes"
+  findings_count:
+    description: "Number of permission findings"
+
+runs:
+  using: "node20"
+  main: "dist/action.cjs"

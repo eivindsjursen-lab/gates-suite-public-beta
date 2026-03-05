@@ -1,0 +1,89 @@
+name: Feature
+description: Propose a new feature or enhancement
+labels: ["feature"]
+body:
+  - type: input
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence describing what this feature achieves.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Testable bullet points that define "done".
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: Explicit exclusions — what this feature does NOT do.
+    validations:
+      required: true
+
+  - type: textarea
+    id: config_surface
+    attributes:
+      label: Config surface
+      description: Inputs, defaults, and output changes.
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: Expected PR output snippet
+      description: Markdown or JSON excerpt of expected gate output.
+    validations:
+      required: false
+
+  - type: textarea
+    id: edge_cases
+    attributes:
+      label: Edge cases (minimum 3)
+      description: Describe at least 3 edge cases this feature must handle.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logging
+    attributes:
+      label: Logging / diagnostics expectations
+      description: What should be logged, and at what level?
+    validations:
+      required: false
+
+  - type: textarea
+    id: required_tests
+    attributes:
+      label: Required tests
+      description: Which test types are needed? (unit / golden / integration / fuzz / matrix)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - core
+        - cache
+        - minutes
+        - tool-diff
+        - docs
+        - release
+        - cross-cutting
+    validations:
+      required: true

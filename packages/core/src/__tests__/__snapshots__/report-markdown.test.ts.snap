@@ -1,0 +1,145 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderJobSummary > renders a FAIL result 1`] = `
+"## Cache Health Gate
+
+**❌ FAIL** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| group | deps | +150.0% | 2.0s | 5.0s |
+
+### So what
+
+- **FAIL_HIT_RATE_DROP**: Cache hit rate dropped significantly compared to baseline. Check cache key stability and restore-keys configuration.
+- **FAIL_RESTORE_REGRESSION**: Cache restore time regressed beyond threshold. Check for cache size growth, key entropy, or missing restore-keys.
+
+Baseline: **10** samples from \`main\` (api mode, workflow 789)
+
+### Now what
+
+- Cache key contains dynamic SHA — remove commit-specific components
+- Add restore-keys fallback for partial cache matches
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+
+---
+*gates-suite/cache-health-gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`renderJobSummary > renders a PASS result 1`] = `
+"## Cache Health Gate
+
+**✅ PASS** · confidence: **high**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **PASS_ALL_CLEAR**: All checks passed. No regressions detected.
+
+Baseline: **10** samples from \`main\` (api mode, workflow 123)
+
+### Now what
+
+- No action required.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+
+---
+*gates-suite/cache-health-gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`renderJobSummary > renders a SKIPPED result 1`] = `
+"## Cache Health Gate
+
+**⏭️ SKIPPED** · confidence: **low**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **SKIP_NO_BASELINE**: No baseline runs found. Ensure the workflow runs on the default branch with push events, or lower baseline.window_days.
+
+### Now what
+
+- Run the workflow on \`push\` for the default branch to build baseline history (usually 5-10 successful runs).
+- After baseline is available, open a PR with a controlled cache-key change to verify \`WARN_HIT_RATE_DROP\` is detected.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+
+---
+*gates-suite/cache-health-gate · confidence: low · 0 baseline samples*"
+`;
+
+exports[`renderJobSummary > renders a WARN result with regressions 1`] = `
+"## Cache Health Gate
+
+**⚠️ WARN** · confidence: **med**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| job | test | +35.2% | 2.0m | 2.7m |
+| step | npm install | +80.0% | 30.0s | 54.0s |
+
+### So what
+
+- **WARN_RESTORE_REGRESSION**: Cache restore time increased compared to baseline. Monitor for sustained regression.
+- **WARN_LOW_CONFIDENCE**: Analysis completed but confidence is low due to limited data or high variance. Results may not be representative.
+
+Baseline: **8** samples from \`main\` (api mode, workflow 456)
+
+### Now what
+
+- Add restore-keys to the cache configuration
+- Check for new dependencies inflating install time
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+
+---
+*gates-suite/cache-health-gate · confidence: med · 8 baseline samples*"
+`;
+
+exports[`renderJobSummary > renders findings for permission diff gate 1`] = `
+"## Agent Permission Diff Gate
+
+**❌ FAIL** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| network.egress | api.openai.com | high | New egress domain added |
+| secrets.read | OPENAI_KEY | high | New secret access |
+
+### So what
+
+- **FAIL_CAPABILITY_ESCALATION**: High-risk capability escalation detected (egress, write, secrets, or repo.write). Requires explicit approval via label or CODEOWNERS.
+
+### Now what
+
+- Add agent-scope-approved label if this expansion is intentional
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new/choose
+
+---
+*gates-suite/agent-permission-diff-gate · confidence: high · 0 baseline samples*"
+`;

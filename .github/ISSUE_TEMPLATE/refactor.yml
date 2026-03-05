@@ -1,0 +1,43 @@
+name: Refactor
+description: Propose a code refactor or internal improvement
+labels: ["refactor"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this refactor needed now?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope_boundaries
+    attributes:
+      label: Scope boundaries
+      description: What cannot change? Which contracts must be preserved?
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success criteria
+      description: No behavior change, or exactly which behavior may change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: performance_target
+    attributes:
+      label: Performance / complexity target
+      description: If relevant, describe the target improvement.
+    validations:
+      required: false
+
+  - type: textarea
+    id: required_tests
+    attributes:
+      label: Required parity tests and snapshots
+      description: Which existing tests prove no behavior drift?
+    validations:
+      required: true

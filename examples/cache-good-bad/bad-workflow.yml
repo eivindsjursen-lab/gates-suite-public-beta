@@ -1,0 +1,40 @@
+# Example: Broken cache workflow that Cache Health Gate detects
+# This demonstrates common cache misconfigurations.
+name: CI (cache-broken)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # BAD: Cache key includes a volatile timestamp, causing churn
+      - name: "[cache-step] group=deps"
+        id: deps_cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          # Anti-pattern: hashFiles on a file that changes every run
+          key: pnpm-${{ runner.os }}-${{ github.run_id }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      # Token will report cache miss because the key always changes
+      - name: "[cache] group=deps hit=${{ steps.deps_cache.outputs.cache-hit }} key_fp=${{ github.run_id }}-${{ hashFiles('pnpm-lock.yaml') }} key_hint=pnpm"
+        run: echo "cache token emitted"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+
+      # Gate will detect:
+      # - FAIL_HIT_RATE_DROP (cache never hits due to key churn)
+      # - WARN_KEY_CHURN (key fingerprint changes every run)
+      - name: Cache Health Gate
+        uses: ./packages/cache-health-gate
+        with:
+          mode: fail
+          thresholds_hit_rate_drop_pct: "5"

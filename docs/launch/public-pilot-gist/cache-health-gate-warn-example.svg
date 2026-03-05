@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1080" viewBox="0 0 1400 1080">
+  <rect width="1400" height="1080" fill="#f6f8fa"/>
+  <rect x="60" y="40" width="1280" height="1000" rx="12" fill="#ffffff" stroke="#d0d7de" />
+
+  <text x="96" y="95" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" fill="#57606a">
+    &lt;!-- cache-health-gate --&gt;
+  </text>
+
+  <text x="96" y="145" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#24292f">
+    Cache Health Gate
+  </text>
+
+  <text x="96" y="190" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#9a6700">
+    ⚠ WARN
+  </text>
+  <text x="250" y="190" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#57606a">
+    · confidence: med
+  </text>
+
+  <text x="96" y="250" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f">
+    What changed
+  </text>
+
+  <rect x="96" y="272" width="1180" height="42" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="116" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">Scope</text>
+  <text x="340" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">Name</text>
+  <text x="610" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">Delta</text>
+  <text x="830" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">Baseline</text>
+  <text x="1080" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">Current</text>
+
+  <rect x="96" y="314" width="1180" height="48" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="116" y="345" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">job</text>
+  <text x="340" y="345" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">test</text>
+  <text x="610" y="345" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#cf222e">+35.2%</text>
+  <text x="830" y="345" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">2.0m</text>
+  <text x="1080" y="345" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">2.7m</text>
+
+  <rect x="96" y="362" width="1180" height="48" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="116" y="393" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">step</text>
+  <text x="340" y="393" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">npm install</text>
+  <text x="610" y="393" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#cf222e">+80.0%</text>
+  <text x="830" y="393" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">30.0s</text>
+  <text x="1080" y="393" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20" fill="#24292f">54.0s</text>
+
+  <text x="96" y="470" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f">
+    So what
+  </text>
+  <text x="110" y="515" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#24292f">
+    • WARN_RESTORE_REGRESSION: Cache restore time increased compared to baseline. Monitor for sustained regression.
+  </text>
+  <text x="110" y="555" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#24292f">
+    • WARN_LOW_CONFIDENCE: Analysis completed but confidence is low due to limited data or high variance.
+  </text>
+
+  <text x="96" y="620" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" fill="#24292f">
+    Baseline: 8 samples from main (api mode, workflow 456)
+  </text>
+
+  <text x="96" y="690" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f">
+    Now what
+  </text>
+  <text x="110" y="735" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#24292f">
+    • Add restore-keys to the cache configuration
+  </text>
+  <text x="110" y="775" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#24292f">
+    • Check for new dependencies inflating install time
+  </text>
+
+  <text x="96" y="845" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#24292f">
+    Feedback
+  </text>
+  <text x="110" y="890" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#0969da">
+    • Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml
+  </text>
+
+  <line x1="96" y1="952" x2="1276" y2="952" stroke="#d0d7de"/>
+  <text x="96" y="995" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="21" fill="#57606a">
+    gates-suite/cache-health-gate · confidence: med · 8 baseline samples
+  </text>
+</svg>

@@ -1,0 +1,61 @@
+name: "CI Minutes Delta Gate"
+description: "Fail PR when CI duration regresses: workflow, job, and step ranking with fix hints."
+author: "gates-suite"
+
+branding:
+  icon: "clock"
+  color: "orange"
+
+inputs:
+  token:
+    description: "GitHub token for API access"
+    required: false
+    default: ${{ github.token }}
+  mode:
+    description: "Gate mode: warn or fail"
+    required: false
+    default: "warn"
+  baseline_runs:
+    description: "Number of baseline runs to fetch"
+    required: false
+    default: "10"
+  baseline_window_days:
+    description: "Look-back window in days for baseline"
+    required: false
+    default: "14"
+  baseline_event_filter:
+    description: "Event type filter for baseline runs"
+    required: false
+    default: "push"
+  no_baseline_behavior:
+    description: "Behavior when no baseline found: warn or skip"
+    required: false
+    default: "warn"
+  thresholds_total_regression_pct:
+    description: "Total duration regression threshold (percent)"
+    required: false
+    default: "15"
+  budget_total_seconds:
+    description: "Optional total workflow time budget (seconds)"
+    required: false
+  budget_per_job_seconds:
+    description: "Optional per-job time budget (seconds)"
+    required: false
+  api_budget_calls:
+    description: "Maximum GitHub API calls per run"
+    required: false
+    default: "30"
+
+outputs:
+  result:
+    description: "Gate verdict: pass, warn, fail, or skipped"
+  confidence:
+    description: "Confidence level: low, med, or high"
+  reason_codes:
+    description: "JSON array of machine-readable reason codes"
+  baseline_samples:
+    description: "Number of baseline samples used"
+
+runs:
+  using: "node20"
+  main: "dist/action.cjs"

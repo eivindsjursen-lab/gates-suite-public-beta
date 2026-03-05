@@ -1,0 +1,36 @@
+# Example: Healthy cache workflow that Cache Health Gate passes
+# This demonstrates proper cache token instrumentation with stable keys.
+name: CI (cache-healthy)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1. Mark the cache step for timing measurement
+      - name: "[cache-step] group=deps"
+        id: deps_cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      # 2. Emit the cache token with deterministic key fingerprint
+      - name: "[cache] group=deps hit=${{ steps.deps_cache.outputs.cache-hit }} key_fp=${{ hashFiles('pnpm-lock.yaml') }} key_hint=pnpm"
+        run: echo "cache token emitted"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+
+      # Run the gate as a post-step
+      - name: Cache Health Gate
+        uses: ./packages/cache-health-gate
+        with:
+          mode: warn

@@ -1,0 +1,30 @@
+node_modules/
+.pnpm-store/
+*.tgz
+*.log
+coverage/
+*.tsbuildinfo
+.turbo/
+tmp/
+.pilot-bundles/
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# NOTE: dist/ is NOT ignored — committed per release invariant

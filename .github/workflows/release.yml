@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "cache-health-gate/v*.*.*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Verify & Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Resolve package from tag
+        id: meta
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          PREFIX="${TAG%%/*}"
+          VERSION="${TAG#*/}"
+          case "$PREFIX" in
+            cache-health-gate)
+              PACKAGE="packages/cache-health-gate"
+              ;;
+            *)
+              echo "::error::Prefix '$PREFIX' is not enabled for releases yet."
+              exit 1
+              ;;
+          esac
+          {
+            echo "tag=$TAG"
+            echo "prefix=$PREFIX"
+            echo "version=$VERSION"
+            echo "package=$PACKAGE"
+          } >> "$GITHUB_OUTPUT"
+          echo "Releasing: $PREFIX @ $VERSION"
+
+      - name: Verify dist is up to date
+        run: node scripts/check-dist.js --package "${{ steps.meta.outputs.prefix }}"
+
+      - name: Verify package exists
+        run: |
+          if [ ! -f "${{ steps.meta.outputs.package }}/package.json" ]; then
+            echo "::error::Package not found: ${{ steps.meta.outputs.package }}"
+            exit 1
+          fi
+          if [ ! -f "${{ steps.meta.outputs.package }}/action.yml" ]; then
+            echo "::error::Missing action.yml in: ${{ steps.meta.outputs.package }}"
+            exit 1
+          fi
+          if [ ! -f "${{ steps.meta.outputs.package }}/dist/action.cjs" ]; then
+            echo "::error::Missing dist/action.cjs in: ${{ steps.meta.outputs.package }}"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: "${{ steps.meta.outputs.prefix }} ${{ steps.meta.outputs.version }}"
+          generate_release_notes: true

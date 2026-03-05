@@ -1,0 +1,112 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden snapshot: CI Minutes Gate job summaries > FAIL — workflow regression with top jobs 1`] = `
+"## CI Minutes Delta Gate
+
+**❌ FAIL** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| workflow | total | +70.7% | 6.8m | 11.7m |
+| job | build | +96.1% | 4.3m | 8.3m |
+
+### So what
+
+- **FAIL_DURATION_REGRESSION**: CI duration regressed beyond the hard threshold. Top contributing jobs are listed in the report.
+
+### Now what
+
+- Job "build" regressed 71%. Review its steps for new or slower operations.
+
+---
+*CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`golden snapshot: CI Minutes Gate job summaries > PASS — duration within threshold 1`] = `
+"## CI Minutes Delta Gate
+
+**✅ PASS** · confidence: **high**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **PASS_ALL_CLEAR**: All checks passed. No regressions detected.
+
+### Now what
+
+- No action required.
+
+---
+*CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`golden snapshot: CI Minutes Gate job summaries > SKIP — no baseline 1`] = `
+"## CI Minutes Delta Gate
+
+**⏭️ SKIPPED** · confidence: **low**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **SKIP_NO_BASELINE**: No baseline runs found. Ensure the workflow runs on the default branch with push events, or lower baseline.window_days.
+
+### Now what
+
+- Run the workflow on \`push\` for the default branch to build baseline history (usually 5-10 successful runs).
+- After baseline is available, open a PR with a controlled cache-key change to verify \`WARN_HIT_RATE_DROP\` is detected.
+
+---
+*CI Minutes Delta Gate · confidence: low · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: CI Minutes Gate job summaries > WARN — budget exceeded 1`] = `
+"## CI Minutes Delta Gate
+
+**⚠️ WARN** · confidence: **high**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **WARN_BUDGET_EXCEEDED**: Workflow duration exceeds the configured time budget. Consider optimizing the top regressed jobs.
+
+### Now what
+
+- Workflow exceeded budget by 1m 40s. Consider parallelizing steps or caching dependencies.
+
+---
+*CI Minutes Delta Gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`golden snapshot: CI Minutes Gate job summaries > WARN — degraded from low confidence 1`] = `
+"## CI Minutes Delta Gate
+
+**⚠️ WARN** · confidence: **low**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| workflow | total | +66.7% | 5.0m | 8.3m |
+
+### So what
+
+- **WARN_DURATION_INCREASE**: CI duration increased compared to baseline. Review top regressed jobs and step-level timing.
+
+### Now what
+
+- Overall workflow duration regressed. Check the top jobs below for the biggest contributors.
+
+---
+*CI Minutes Delta Gate · confidence: low · 3 baseline samples*"
+`;

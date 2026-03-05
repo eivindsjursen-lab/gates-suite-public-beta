@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/cache-health-gate" },
+    { "path": "packages/ci-minutes-gate" },
+    { "path": "packages/agent-permission-diff-gate" }
+  ]
+}

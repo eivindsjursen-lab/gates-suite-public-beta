@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/action.ts"],"sourcesContent":["import { run } from \"./main.js\";\n\nvoid run();\n"],"mappings":";;;;;;AAEA,KAAK,IAAI;","names":[]}

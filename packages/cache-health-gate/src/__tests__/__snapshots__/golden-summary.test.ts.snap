@@ -1,0 +1,118 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden snapshot: Cache Health Gate job summaries > FAIL — multiple violations 1`] = `
+"## Cache Health Gate
+
+**❌ FAIL** · confidence: **high**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| job | build/deps | -57.9% | 950ms | 400ms |
+| job | build/deps | +140.0% | 500ms | 1.2s |
+
+### So what
+
+- **FAIL_HIT_RATE_DROP**: Cache hit rate dropped significantly compared to baseline. Check cache key stability and restore-keys configuration.
+- **FAIL_RESTORE_REGRESSION**: Cache restore time regressed beyond threshold. Check for cache size growth, key entropy, or missing restore-keys.
+
+### Now what
+
+- Check cache key composition for group "deps".
+- Investigate cache size growth for group "deps".
+
+---
+*Cache Health Gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`golden snapshot: Cache Health Gate job summaries > PASS — all caches healthy 1`] = `
+"## Cache Health Gate
+
+**✅ PASS** · confidence: **high**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **PASS_ALL_CLEAR**: All checks passed. No regressions detected.
+
+### Now what
+
+- No action required.
+
+---
+*Cache Health Gate · confidence: high · 10 baseline samples*"
+`;
+
+exports[`golden snapshot: Cache Health Gate job summaries > SKIP — no cache tokens detected 1`] = `
+"## Cache Health Gate
+
+**⏭️ SKIPPED** · confidence: **low**
+
+### What changed
+
+No regressions or findings detected.
+
+### So what
+
+- **SKIP_NO_CACHE_DETECTED**: No cache tokens or cache-step markers found in the workflow run. Add [cache] and [cache-step] markers to enable analysis.
+
+### Now what
+
+- No cache markers were detected in this workflow run. Add \`[cache-step]\` markers to cache restore steps and a \`[cache]\` token step after each cache restore.
+- This is an onboarding/setup issue, not a CI regression. See the Cache Health Gate README examples for Node/Python instrumentation.
+
+---
+*Cache Health Gate · confidence: low · 0 baseline samples*"
+`;
+
+exports[`golden snapshot: Cache Health Gate job summaries > WARN — hit rate drop, low confidence degrade 1`] = `
+"## Cache Health Gate
+
+**⚠️ WARN** · confidence: **low**
+
+### What changed
+
+| Scope | Name | Delta | Baseline | Current |
+|-------|------|------:|----------:|--------:|
+| job | build/deps | -15.8% | 950ms | 800ms |
+
+### So what
+
+- **WARN_HIT_RATE_DROP**: Cache hit rate decreased compared to baseline. Monitor this trend across PRs.
+- **WARN_LOW_CONFIDENCE**: Analysis completed but confidence is low due to limited data or high variance. Results may not be representative.
+
+### Now what
+
+- Check cache key composition for group "deps". Ensure key includes only deterministic inputs.
+
+---
+*Cache Health Gate · confidence: low · 3 baseline samples*"
+`;
+
+exports[`golden snapshot: Cache Health Gate job summaries > WARN — key churn + duplicate cache step 1`] = `
+"## Cache Health Gate
+
+**⚠️ WARN** · confidence: **med**
+
+### What changed
+
+| Scope | Name | Risk | Detail |
+|-------|------|------|--------|
+| job | build/node_modules | medium | 80% distinct keys (4/5 attempts) |
+
+### So what
+
+- **WARN_KEY_CHURN**: High cache key churn detected. Distinct key fingerprints per group are above normal. Check for dynamic key components like commit SHA or timestamps.
+- **WARN_DUPLICATE_CACHE_STEP_GROUP**: Multiple cache-step markers found for the same (job, group). Using nearest preceding step. Confidence downgraded.
+
+### Now what
+
+- Group "node_modules" has high key churn. Review if volatile inputs are included in the cache key.
+
+---
+*Cache Health Gate · confidence: med · 8 baseline samples*"
+`;

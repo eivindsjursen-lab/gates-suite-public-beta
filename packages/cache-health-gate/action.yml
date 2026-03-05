@@ -1,0 +1,67 @@
+name: "Cache Health Gate"
+description: "Fail PR when GitHub Actions cache regresses: hit-rate, restore time, key churn."
+author: "gates-suite"
+
+branding:
+  icon: "shield"
+  color: "blue"
+
+inputs:
+  token:
+    description: "GitHub token for API access"
+    required: false
+    default: ${{ github.token }}
+  mode:
+    description: "Gate mode: warn or fail"
+    required: false
+    default: "warn"
+  baseline_runs:
+    description: "Number of baseline runs to fetch"
+    required: false
+    default: "10"
+  baseline_window_days:
+    description: "Look-back window in days for baseline"
+    required: false
+    default: "14"
+  baseline_event_filter:
+    description: "Event type filter for baseline runs"
+    required: false
+    default: "push"
+  no_baseline_behavior:
+    description: "Behavior when no baseline found: warn or skip"
+    required: false
+    default: "warn"
+  thresholds_hit_rate_drop_pct:
+    description: "Hit rate drop threshold (percentage points)"
+    required: false
+    default: "5"
+  thresholds_restore_regression_pct:
+    description: "Restore time regression threshold (percent)"
+    required: false
+    default: "20"
+  thresholds_restore_hard_ms:
+    description: "Absolute restore time limit (ms)"
+    required: false
+    default: "30000"
+  api_budget_calls:
+    description: "Maximum GitHub API calls per run"
+    required: false
+    default: "30"
+  debug:
+    description: "Enable verbose baseline/cache diagnostics in step logs"
+    required: false
+    default: "false"
+
+outputs:
+  result:
+    description: "Gate verdict: pass, warn, fail, or skipped"
+  confidence:
+    description: "Confidence level: low, med, or high"
+  reason_codes:
+    description: "JSON array of machine-readable reason codes"
+  baseline_samples:
+    description: "Number of baseline samples used"
+
+runs:
+  using: "node20"
+  main: "dist/action.cjs"
