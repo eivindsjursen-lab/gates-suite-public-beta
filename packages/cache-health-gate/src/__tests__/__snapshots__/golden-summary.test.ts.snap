@@ -22,6 +22,10 @@ exports[`golden snapshot: Cache Health Gate job summaries > FAIL — multiple vi
 - Check cache key composition for group "deps".
 - Investigate cache size growth for group "deps".
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *Cache Health Gate · confidence: high · 10 baseline samples*"
 `;
@@ -42,6 +46,10 @@ No regressions or findings detected.
 ### Now what
 
 - No action required.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *Cache Health Gate · confidence: high · 10 baseline samples*"
@@ -64,6 +72,10 @@ No regressions or findings detected.
 
 - No cache markers were detected in this workflow run. Add \`[cache-step]\` markers to cache restore steps and a \`[cache]\` token step after each cache restore.
 - This is an onboarding/setup issue, not a CI regression. See the Cache Health Gate README examples for Node/Python instrumentation.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *Cache Health Gate · confidence: low · 0 baseline samples*"
@@ -89,6 +101,10 @@ exports[`golden snapshot: Cache Health Gate job summaries > WARN — hit rate dr
 
 - Check cache key composition for group "deps". Ensure key includes only deterministic inputs.
 
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
+
 ---
 *Cache Health Gate · confidence: low · 3 baseline samples*"
 `;
@@ -112,6 +128,10 @@ exports[`golden snapshot: Cache Health Gate job summaries > WARN — key churn +
 ### Now what
 
 - Group "node_modules" has high key churn. Review if volatile inputs are included in the cache key.
+
+### Feedback
+
+- Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new/choose
 
 ---
 *Cache Health Gate · confidence: med · 8 baseline samples*"

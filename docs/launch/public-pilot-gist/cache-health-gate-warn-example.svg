@@ -70,7 +70,7 @@
     Feedback
   </text>
   <text x="110" y="890" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#0969da">
-    • Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml
+    • Report feedback/issues: https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml
   </text>
 
   <line x1="96" y1="952" x2="1276" y2="952" stroke="#d0d7de"/>

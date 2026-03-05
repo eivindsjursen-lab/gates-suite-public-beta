@@ -1,24 +1,26 @@
-# Zero-Assistance Quickstart (Non-Assisted Alpha)
+# Zero-Assistance Quickstart (Public Beta)
 
 This guide is for running Cache Health Gate without live help.
 
 ## Primary install path (use this)
 
-Use the local vendored bundle:
+Use the public tag ref:
 
-1. Copy into your repo:
-   - `.github/actions/cache-health-gate/action.yml`
-   - `.github/actions/cache-health-gate/dist/*`
-2. In workflow:
+1. In workflow:
 
 ```yaml
 - name: Cache Health Gate
-  uses: ./.github/actions/cache-health-gate
+  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
   with:
     mode: warn
     no_baseline_behavior: warn
     baseline_event_filter: push
 ```
+
+2. If your environment blocks cross-repo actions, use vendored fallback:
+   - `.github/actions/cache-health-gate/action.yml`
+   - `.github/actions/cache-health-gate/dist/*`
+   - `uses: ./.github/actions/cache-health-gate`
 
 ## Required instrumentation
 
@@ -68,4 +70,4 @@ Most common blockers:
 ## Feedback (please report)
 
 - Issue template:
-  - `https://github.com/eivindsjursen-lab/gates-suite/issues/new?template=early-access-feedback.yml`
+  - `https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml`
