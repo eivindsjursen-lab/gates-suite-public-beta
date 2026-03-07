@@ -22,12 +22,12 @@ uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache
 
 Quickstart + troubleshooting:
 
-- `docs/launch/non-assisted-quickstart.md`
-- `docs/troubleshooting/common-issues.md`
+- https://github.com/eivindsjursen-lab/gates-suite-public-beta/blob/main/docs/launch/non-assisted-quickstart.md
+- https://github.com/eivindsjursen-lab/gates-suite-public-beta/blob/main/docs/troubleshooting/common-issues.md
 
 If you test it, please report feedback here:
 
-- `issues/new?template=early-access-feedback.yml`
+- https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml
 
 ## Long version
 
@@ -62,4 +62,4 @@ I am specifically looking for feedback on:
 
 Feedback template:
 
-- `https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml`
+- https://github.com/eivindsjursen-lab/gates-suite-public-beta/issues/new?template=early-access-feedback.yml
