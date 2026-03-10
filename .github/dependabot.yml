@@ -4,15 +4,19 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "06:00"
+      day: "tuesday"
+      time: "07:00"
       timezone: "UTC"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 2
     labels:
       - "dependencies"
       - "automated"
     commit-message:
       prefix: "deps"
+    groups:
+      npm-all:
+        patterns:
+          - "*"
     # Temporary: rollup security update jobs currently fail with
     # `security_update_not_possible` (fixed >=4.59.0, max resolvable 4.58.0).
     # Ignore to avoid repeated failed Dependabot workflow noise.
@@ -23,12 +27,23 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "06:30"
+      day: "tuesday"
+      time: "07:30"
       timezone: "UTC"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 1
     labels:
       - "dependencies"
       - "automated"
     commit-message:
       prefix: "deps"
+    groups:
+      gha-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
