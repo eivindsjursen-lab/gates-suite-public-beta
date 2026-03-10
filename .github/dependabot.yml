@@ -17,6 +17,11 @@ updates:
       npm-all:
         patterns:
           - "*"
+    # Temporary: rollup security update jobs currently fail with
+    # `security_update_not_possible` (fixed >=4.59.0, max resolvable 4.58.0).
+    # Ignore to avoid repeated failed Dependabot workflow noise.
+    ignore:
+      - dependency-name: "rollup"
 
   - package-ecosystem: "github-actions"
     directory: "/"
