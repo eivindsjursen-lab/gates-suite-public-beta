@@ -24,29 +24,17 @@ steps:
 
   # 3. Run the gate
   - name: Cache Health Gate
-    uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
+    uses: ./.github/actions/cache-health-gate
     with:
       mode: warn
 ```
 
-## Primary Install Path (Public Beta)
+## Primary Install Path (Non-Assisted Alpha)
 
-Use the published tag from this public repo:
+Use the **local vendored bundle** as the default path in non-assisted alpha.
+This avoids private cross-repo access failures and keeps rollback simple.
 
-```yaml
-- name: Cache Health Gate
-  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
-```
-
-Then follow:
-
-- `docs/launch/non-assisted-quickstart.md`
-
-## Fallback Install Path (Vendored Bundle)
-
-Use this fallback only if your environment blocks cross-repo action usage.
-
-1. Copy bundle files into your repo:
+1. Copy pilot bundle files into your repo:
    - `.github/actions/cache-health-gate/action.yml`
    - `.github/actions/cache-health-gate/dist/*`
 2. Use the local action path:
@@ -56,11 +44,24 @@ Use this fallback only if your environment blocks cross-repo action usage.
   uses: ./.github/actions/cache-health-gate
 ```
 
+3. Follow the zero-assistance flow:
+   - `docs/launch/non-assisted-quickstart.md`
+
 ## Other Install Paths (Advanced)
 
 Use these only when distribution/access is known to be correct.
 
-### A) Private shared action repo (same org / explicit access)
+### A) Public action ref (public soft launch / later)
+
+Use this when the action repository is public and the tag is accessible from the
+target repository.
+
+```yaml
+- name: Cache Health Gate
+  uses: eivindsjursen-lab/gates-suite/packages/cache-health-gate@cache-health-gate/v1
+```
+
+### B) Private shared action repo (same org / explicit access)
 
 Use this only when the target repository can access the private action
 repository (for example within the same org with the right settings).
@@ -80,7 +81,7 @@ Use this first in most repos.
 
 ```yaml
 - name: Cache Health Gate
-  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
+  uses: ./.github/actions/cache-health-gate
   with:
     mode: warn
     no_baseline_behavior: warn
@@ -99,7 +100,7 @@ Use this when CI is noisier (matrix builds, larger dependency installs, longer r
 
 ```yaml
 - name: Cache Health Gate
-  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
+  uses: ./.github/actions/cache-health-gate
   with:
     mode: warn
     no_baseline_behavior: warn
@@ -169,8 +170,14 @@ This is usually caused by normal runtime variance, for example:
 
 Treat this as a **tuning signal first**, not a product bug.
 
-In dogfood + pilot testing so far, `WARN_HIT_RATE_DROP` has been the most reliable
-first signal to trust and investigate.
+In our private alpha so far, `WARN_HIT_RATE_DROP` has been the most reliable
+first signal to trust and investigate for dependency-cache style workflows
+such as `npm`, `pnpm`, `pip`, and package-manager caches backed by
+`actions/cache`.
+
+For Docker/buildx-style local build caches, a controlled bad case may instead
+surface first as `WARN_RESTORE_REGRESSION`. Treat that as a valid profile
+shape, not automatically as a broken install.
 
 ## Bad vs Good Cache Key Examples
 
@@ -284,6 +291,18 @@ noisy.
 - treat `WARN_RESTORE_REGRESSION` as tuning guidance first
 - tune restore thresholds before enabling stricter enforcement
 
+### Profile C — Docker/buildx / local build-cache repos
+
+Use this if your workflow restores local build caches for Docker/Buildx or
+similar heavy build artifacts.
+
+- `mode: warn`
+- baseline: prefer 8-10 successful default-branch runs
+- expect restore-time signals to be more informative than hit-rate early on
+- treat `WARN_RESTORE_REGRESSION` as a valid first signal for this profile
+- confirm summaries still point back to the affected cache group(s)
+- do not assume missing `WARN_HIT_RATE_DROP` means the gate is broken
+
 ## Inputs
 
 | Input                               | Default               | Description                                        |
@@ -365,12 +384,11 @@ The gate follows a strict degrade ladder to avoid false-positive failures:
 
 **`uses: owner/repo/path@tag` fails with `repository not found`**
 
-- Verify the ref is correct:
-  - `eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1`
-- If your environment restricts cross-repo action usage, use the **vendored
-  bundle fallback** install path above.
-- For private shared actions inside one org, verify repository access and
-  Actions permissions first.
+- This usually means the action repository is private and the target repository
+  does not have access.
+- For Private Alpha, prefer the **local vendored bundle** install path above.
+- If you are testing cross-repo inside the same org, verify repository access
+  and Actions permissions first.
 
 **Gate always returns SKIP_NO_CACHE_DETECTED**
 
@@ -390,7 +408,7 @@ The gate follows a strict degrade ladder to avoid false-positive failures:
 
 - This can happen in larger or matrix-heavy repos due to runtime variance
 - Treat it as a tuning signal first: check key stability, add/verify `restore-keys`, and build a larger baseline (8-10 runs)
-- In dogfood + pilot testing so far, `WARN_HIT_RATE_DROP` has been the most reliable first signal to trust
+- In private alpha so far, `WARN_HIT_RATE_DROP` has been the most reliable first signal to trust
 
 **Hit rate drops on every PR**
 

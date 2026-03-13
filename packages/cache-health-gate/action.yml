@@ -63,5 +63,5 @@ outputs:
     description: "Number of baseline samples used"
 
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/action.cjs"

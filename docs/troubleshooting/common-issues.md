@@ -119,26 +119,22 @@ See the [Cache Health Gate README](../../packages/cache-health-gate/README.md) f
 **Symptom:** The workflow fails during job setup before the gate step runs, with
 an error like `repository not found`.
 
-**Cause:** The action ref is wrong, inaccessible, or blocked by repository/org
-policy.
+**Cause:** The action repository is private, and the target repository does not
+have access to use the action by cross-repo reference.
 
-**Fix (Public Beta recommended path):**
-
-- Use the public tag ref:
-
-```yaml
-- name: Cache Health Gate
-  uses: eivindsjursen-lab/gates-suite-public-beta/packages/cache-health-gate@cache-health-gate/v1
-```
-
-**Fallback (if cross-repo actions are blocked):**
+**Fix (Private Alpha recommended path):**
 
 - Vendor the action locally in the target repo:
   - `.github/actions/cache-health-gate/action.yml`
   - `.github/actions/cache-health-gate/dist/*`
-- Use `uses: ./.github/actions/cache-health-gate`
+- Use a local action reference:
 
-**Alternative (same org / shared private action repo):**
+```yaml
+- name: Cache Health Gate
+  uses: ./.github/actions/cache-health-gate
+```
+
+**Alternative (same org / shared private repo):**
 
 - Ensure the target repository is allowed to access the private action repo.
 - Confirm workflow permissions and org/repo Actions settings allow private action
@@ -207,8 +203,12 @@ Common causes include:
 
 Treat this as a **tuning signal first**, not a product bug.
 
-In dogfood + pilot testing so far, `WARN_HIT_RATE_DROP` has been the most reliable first
-signal to trust and investigate.
+In private alpha so far, `WARN_HIT_RATE_DROP` has been the most reliable first
+signal to trust and investigate for dependency-cache style workflows.
+
+For Docker/buildx-style local build caches, a controlled bad case may surface
+first as `WARN_RESTORE_REGRESSION`. Treat that as a valid profile shape, then
+check whether the summary still points back to the affected cache group.
 
 ### Tuning guide for noisy repos (matrix / package-heavy)
 
@@ -245,6 +245,15 @@ Use this sequence before changing product code or assuming a policy bug.
 - treat `WARN_HIT_RATE_DROP` as primary signal
 - treat `WARN_RESTORE_REGRESSION` as tuning guidance first
 - tune restore thresholds before stricter enforcement
+
+**Profile C — Docker/buildx / local build-cache repos**
+
+- `mode: warn`
+- baseline: prefer 8-10 successful default-branch runs
+- expect restore-time signals to be more informative than hit-rate early on
+- treat `WARN_RESTORE_REGRESSION` as a valid first signal for this profile
+- confirm summaries still point back to the affected cache group(s)
+- do not assume missing `WARN_HIT_RATE_DROP` means the gate is broken
 
 ### Good vs. bad smoke flow (recommended)
 
